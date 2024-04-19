@@ -2,6 +2,7 @@ import sys
 import pygame
 
 import constants
+from Pilota import Pilota
 from constants import Juego, Colors, Juego
 import Jugador
 
@@ -17,9 +18,11 @@ gameOver = False
 jugador1 = Jugador.Jugador("Jugador 1")
 jugador2 = Jugador.Jugador("Jugador 2")
 
+# Creamos la pelota en el centro de la pantalla
+pilota = Pilota(Colors.BLANC)
 
 # Función que pinta los objetos en la pantalla
-def PintaObjectes(jugador1, jugador2):
+def PintaObjectes(jugador1, jugador2, pilota):
     # Pintamos el fondo
     finestraJoc.fill(Colors.VERD)
     pygame.draw.rect(finestraJoc, Colors.NEGRE, Juego.MARGES_ESCENARI)
@@ -27,10 +30,15 @@ def PintaObjectes(jugador1, jugador2):
     # Pinta los jugadores
     jugador1.pintar(finestraJoc)
     jugador2.pintar(finestraJoc)
+    pilota.pintar(finestraJoc)
+
+
+    # Pinta la pilota
+    pilota.pintar(finestraJoc)  # Afegim la crida a pintar de la pilota
 
 
 # Función que detecta los eventos de teclado
-def DetectaEvents(jugador1, jugador2):
+def DetectaEvents(jugador1, jugador2, pilota):
 
     # Detectamos los eventos de teclado
     keys = pygame.key.get_pressed()
@@ -53,11 +61,10 @@ def DetectaEvents(jugador1, jugador2):
 
 # Bucle principal del juego
 while not gameOver:
+    PintaObjectes(jugador1, jugador2, pilota)
+    DetectaEvents(jugador1, jugador2, pilota)
 
-    # Pintamos los objetos y detectamos los eventos
-    PintaObjectes(jugador1, jugador2)
-    DetectaEvents(jugador1, jugador2)
+    pilota.actualitza(jugador1, jugador2)
 
-    # Añadimos la tasa de refresco y actualizamos la pantalla
     rellotge.tick(Juego.TASA_DE_REFRESCO)
     pygame.display.update()

@@ -1,5 +1,5 @@
 class Jugadores:
-    VELOCIDAD = 5
+    VELOCIDAD = 10
     MIDAX_JUGADOR = 15
     MIDAY_JUGADOR = 60
     COSTAT_JUGADOR = 30
@@ -15,3 +15,8 @@ class Juego:
     AMPLA_FINESTRA = 800
     ALCADA_FINESTRA = 600
     MARGES_ESCENARI = (0, 20, 800, 560)
+
+class Pilotas:
+    MIDAX_PILOTA = 15
+    MIDAY_PILOTA = 15
+    VELOCITAT = 5
