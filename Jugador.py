@@ -1,9 +1,11 @@
 # Clase jugador con los siguients atributos: posX,posY y color
 import pygame
+
+from ObjecteEscenari import ObjecteEscenari
 from constants import Juego, Colors, Jugadores
 
 
-class Jugador:
+class Jugador(ObjecteEscenari):
     # Constructor
     def __init__(self, name):
 
@@ -28,11 +30,12 @@ class Jugador:
             print("Error: Nombre de jugador no válido")
             exit()
 
-    def moviment(self, direction):
-        if direction == "arriba":
-            self.posY = max(self.posY - self.velocitat, Juego.MARGES_ESCENARI[1]) # Ponemos los márgenes para que no se salga de la pantalla
-        elif direction == "abajo":
-            self.posY = min(self.posY + self.velocitat, Juego.ALCADA_FINESTRA - self.midaY - Juego.MARGES_ESCENARI[1]) # Ponemos los márgenes para que no se salga de la pantalla
+        super().__init__(self.posX, self.posY, self.color)
 
-    def pintar(self, finestraJoc):
-        pygame.draw.rect(finestraJoc, self.color, (self.posX, self.posY, self.midaX, self.midaY))
+    def MoureMunt(self):
+       self.posY = max(self.posY - self.velocitat, Juego.MARGES_ESCENARI[1]) # Ponemos los márgenes para que no se salga de la pantalla
+
+    def MoureBaix(self):
+        self.posY = min(self.posY + self.velocitat, Juego.ALCADA_FINESTRA - self.midaY - Juego.MARGES_ESCENARI[
+            1])  # Ponemos los márgenes para que no se salga de la pantalla
+

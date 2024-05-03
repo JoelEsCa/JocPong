@@ -1,14 +1,18 @@
 import pygame
 import random
+
+from ObjecteEscenari import ObjecteEscenari
 from constants import Juego, Colors, Jugadores, Pilotas
 
-class Pilota:
+class Pilota(ObjecteEscenari):
     def __init__(self, color):
         self.midaX = Pilotas.MIDAX_PILOTA
         self.midaY = Pilotas.MIDAY_PILOTA
         self.color = color
         self.velocitat_inicial = Pilotas.VELOCITAT
         self.reinicia()
+        super().__init__(self.posX, self.posY, color)
+
 
     def reinicia(self):
         self.posX = Juego.AMPLA_FINESTRA // 2
@@ -20,7 +24,8 @@ class Pilota:
     def augmenta_velocitat(self):
         self.velocitat = self.velocitat * 1.1
 
-    def actualitza(self, jugador1, jugador2):
+
+    def MovimentPilota(self, jugador1, jugador2):
         self.posX += self.velocitat * self.direccio[0]
         self.posY += self.velocitat * self.direccio[1]
 
@@ -52,6 +57,3 @@ class Pilota:
         if rect_pilota.colliderect(rect_jugador1) or rect_pilota.colliderect(rect_jugador2):
             self.direccio[0] = -self.direccio[0]
             self.augmenta_velocitat()
-
-    def pintar(self, finestraJoc):
-        pygame.draw.rect(finestraJoc, self.color, (self.posX, self.posY, self.midaX, self.midaY))

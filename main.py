@@ -27,14 +27,10 @@ def PintaObjectes(jugador1, jugador2, pilota):
     finestraJoc.fill(Colors.VERD)
     pygame.draw.rect(finestraJoc, Colors.NEGRE, Juego.MARGES_ESCENARI)
 
-    # Pinta los jugadores
-    jugador1.pintar(finestraJoc)
-    jugador2.pintar(finestraJoc)
-    pilota.pintar(finestraJoc)
-
-
-    # Pinta la pilota
-    pilota.pintar(finestraJoc)  # Afegim la crida a pintar de la pilota
+    # Pinta els jugadors i la pilota
+    jugador1.Pinta(finestraJoc)
+    jugador2.Pinta(finestraJoc)
+    pilota.Pinta(finestraJoc)
 
 
 # Función que detecta los eventos de teclado
@@ -45,13 +41,13 @@ def DetectaEvents(jugador1, jugador2, pilota):
 
     # Movemos los jugadores
     if keys[pygame.K_w]:
-        jugador1.moviment("arriba")
+        jugador1.MoureMunt()
     if keys[pygame.K_s]:
-        jugador1.moviment("abajo")
+        jugador1.MoureBaix()
     if keys[pygame.K_UP]:
-        jugador2.moviment("arriba")
+        jugador2.MoureMunt()
     if keys[pygame.K_DOWN]:
-        jugador2.moviment("abajo")
+        jugador2.MoureBaix()
 
     # Detectamos si se ha cerrado la ventana
     for event in pygame.event.get():
@@ -64,7 +60,7 @@ while not gameOver:
     PintaObjectes(jugador1, jugador2, pilota)
     DetectaEvents(jugador1, jugador2, pilota)
 
-    pilota.actualitza(jugador1, jugador2)
+    pilota.MovimentPilota(jugador1, jugador2)
 
     rellotge.tick(Juego.TASA_DE_REFRESCO)
     pygame.display.update()
