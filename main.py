@@ -8,6 +8,7 @@ import Jugador
 
 # Inicializamos pygame
 pygame.init()
+fontText = pygame.font.SysFont("monospace", 22)
 
 # Creamos la ventana del juego, el reloj y la variable que controla el fin del juego
 finestraJoc = pygame.display.set_mode((Juego.AMPLA_FINESTRA, Juego.ALCADA_FINESTRA))
@@ -32,6 +33,14 @@ def PintaObjectes(jugador1, jugador2, pilota):
     jugador2.Pinta(finestraJoc)
     pilota.Pinta(finestraJoc)
 
+    textJugador1 = "Jugador 1: " + str(jugador1.punts)
+    textJugador2 = "Jugador 2: " + str(jugador2.punts)
+
+    etiquetaJugador1 = fontText.render(textJugador1, 1, Colors.BLANC)
+    etiquetaJugador2 = fontText.render(textJugador2, 1, Colors.BLANC)
+
+    finestraJoc.blit(etiquetaJugador1, (50, 50))
+    finestraJoc.blit(etiquetaJugador2, (Juego.AMPLA_FINESTRA - 200, 50))
 
 # Función que detecta los eventos de teclado
 def DetectaEvents(jugador1, jugador2, pilota):

@@ -45,12 +45,14 @@ class Pilota(ObjecteEscenari):
                 self.direccio[0] = -self.direccio[0]
                 self.augmenta_velocitat()
             else:
+                jugador2.punts += 1
                 self.reinicia()
         elif self.posX >= (Juego.AMPLA_FINESTRA) - self.midaX:
             if rect_pilota.colliderect(rect_jugador2):
                 self.direccio[0] = -self.direccio[0]
                 self.augmenta_velocitat()
             else:
+                jugador1.punts += 1
                 self.reinicia()
 
         # Comprobar colisiones con los jugadores

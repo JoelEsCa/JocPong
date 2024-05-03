@@ -14,6 +14,7 @@ class Jugador(ObjecteEscenari):
         self.midaX = Jugadores.MIDAX_JUGADOR
         self.midaY = Jugadores.MIDAY_JUGADOR
         self.velocitat = Jugadores.VELOCIDAD
+        self.punts = 0
 
         # Dependiendo del nombre del jugador, se le asignará una posición y un color diferente
 

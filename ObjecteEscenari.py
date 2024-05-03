@@ -1,6 +1,5 @@
 import pygame
 
-
 class ObjecteEscenari:
     def __init__(self, posX, posY, color):
         self.posX = posX
